@@ -1,0 +1,76 @@
+#include <cs50.h>   
+#include <stdio.h>     
+#include <math.h>      //mathematical function (pow)
+#include <string.h>    
+
+int main(void)
+{
+    
+    char operator;              
+    float num1, num2;          
+    //Displaying program title
+    printf("Simple Calculator\n");
+    
+    
+    printf("Enter an operator (+, -, *, /): ");
+    operator = get_char();
+    printf("Enter first number: ");
+    num1 = get_float();
+    printf("Enter second number: ");
+    num2 = get_float();
+    
+    //calculation based on the operator using switch statement
+    switch(operator) 
+    {
+        case '+':
+            //Addition
+            printf("%.2f + %.2f = %.2f\n", num1, num2, num1 + num2);
+            break;
+            
+        case '-':
+            //Subtraction 
+            printf("%.2f - %.2f = %.2f\n", num1, num2, num1 - num2);
+            break;
+            
+        case '*':
+            //multiplication 
+            printf("%.2f * %.2f = %.2f\n", num1, num2, num1 * num2);
+            break;
+            
+        case '/':
+            //division zero-division check
+            if (num2 != 0)
+            {
+                printf("%.2f / %.2f = %.2f\n", num1, num2, num1 / num2);
+            }
+            else
+            {
+                printf("Error! Division by zero is undefined.\n");
+            }
+            break;
+            
+        case '^':
+            //(Power) math.h pow function
+            printf("%.2f ^ %.2f = %.2f\n", num1, num2, pow(num1, num2));
+            break;
+            
+        case '%':
+            //Modulo operation
+            if ((int)num2 != 0)
+            {
+                printf("%.0f %% %.0f = %.0f\n", num1, num2, fmod(num1, num2));
+            }
+            else
+            {
+                printf("Error! Modulo by zero is undefined.\n");
+            }
+            break;
+            
+        default:
+            //handling invalid operator input
+            printf("Error! Invalid operator '%c'.\n", operator);
+            printf("Valid operators are: +, -, *, /, ^, %%\n");
+    }
+    
+    return 0; 
+}
