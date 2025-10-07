@@ -1,44 +1,48 @@
-#include <cs50.h>   
-#include <stdio.h>     
+#include <cs50.h>
+#include <stdio.h>
 #include <math.h>      //mathematical function (pow)
-#include <string.h>    
+#include <string.h>
 
 int main(void)
 {
-    
-    char operator;              
-    float num1, num2;          
+
+
     //Displaying program title
     printf("Simple Calculator\n");
-    
-    
-    printf("Enter an operator (+, -, *, /): ");
-    operator = get_char();
-    printf("Enter first number: ");
-    num1 = get_float();
-    printf("Enter second number: ");
-    num2 = get_float();
-    
+
+char operator = get_char("Enter an operator (+, -, *, /,^,%%): ");//asking for valid operator
+ do
+    {
+        operator = get_char("Enter an operator (+, -, *, /,^, %%): ");
+        if (operator != '+' && operator != '-' && operator != '*' && operator != '/' && operator != '^' && operator != '%')
+        {
+            printf("Error! Invalid operator '%c'. Please enter one of +, -, *, /,^, %%\n", operator);
+        }
+    } while (operator != '+' && operator != '-' && operator != '*' && operator != '/' && operator != '^' && operator != '%');
+
+    float num1 = get_float("Enter first number: ");
+   float num2 = get_float("Enter second number: ");
+
     //calculation based on the operator using switch statement
-    switch(operator) 
+    switch(operator)
     {
         case '+':
             //Addition
             printf("%.2f + %.2f = %.2f\n", num1, num2, num1 + num2);
             break;
-            
+
         case '-':
-            //Subtraction 
+            //Subtraction
             printf("%.2f - %.2f = %.2f\n", num1, num2, num1 - num2);
             break;
-            
+
         case '*':
-            //multiplication 
+            //multiplication
             printf("%.2f * %.2f = %.2f\n", num1, num2, num1 * num2);
             break;
-            
+
         case '/':
-            //division zero-division check
+            //division and zero-division check
             if (num2 != 0)
             {
                 printf("%.2f / %.2f = %.2f\n", num1, num2, num1 / num2);
@@ -48,12 +52,12 @@ int main(void)
                 printf("Error! Division by zero is undefined.\n");
             }
             break;
-            
+
         case '^':
             //(Power) math.h pow function
             printf("%.2f ^ %.2f = %.2f\n", num1, num2, pow(num1, num2));
             break;
-            
+
         case '%':
             //Modulo operation
             if ((int)num2 != 0)
@@ -65,12 +69,9 @@ int main(void)
                 printf("Error! Modulo by zero is undefined.\n");
             }
             break;
-            
-        default:
-            //handling invalid operator input
-            printf("Error! Invalid operator '%c'.\n", operator);
-            printf("Valid operators are: +, -, *, /, ^, %%\n");
+
+      
     }
-    
-    return 0; 
+
+    return 0;
 }
