@@ -10,7 +10,7 @@ int main(void)
     //Displaying program title
     printf("Simple Calculator\n");
 
-char operator = get_char("Enter an operator (+, -, *, /,^,%%): ");//asking for valid operator
+char operator = get_char("Enter an operator (+, -, *, /,^,%%): ");//asking for valid operator, also always make sure to use %% where escape is required(% only works if get char or directly modulo operation in code), but requires use of %% in case of printf etc
  do
     {
         operator = get_char("Enter an operator (+, -, *, /,^, %%): ");
