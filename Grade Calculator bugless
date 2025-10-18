@@ -75,7 +75,8 @@ int main(void)
     }
 
     average = total / num_subjects;
-    printf("\nYour average score is: %.2f\n", average);
+    printf("\nYour average score is: %.2f\n", average);  
+//all this is very inefficient, but we ball and learn
 
     if (average >= 95.0f)
         printf("Grade: A+\n");
