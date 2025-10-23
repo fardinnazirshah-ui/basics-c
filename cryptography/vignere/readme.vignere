@@ -1,0 +1,16 @@
+ * A program that encrypts messages using the Vigenère cipher.
+ * Unlike Caesar cipher (single shift), Vigenère uses a keyword where
+ * each letter represents a different shift value.
+ *
+ * Usage: ./vigenere keyword
+ * Example: ./vigenere bacon
+ * 
+ * Example Input/Output:
+ *   Keyword: bacon
+ *   plaintext:  meet me at the park
+ *   ciphertext: negh zf av huf pcfx
+ *
+ * How it works:
+ *   - Each letter in the keyword represents a shift (a=0, b=1, c=2, etc.)
+ *   - The keyword repeats to match the plaintext length
+ *   - Only alphabetic characters in plaintext are encrypted
